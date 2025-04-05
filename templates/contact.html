@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block body %}
+
+<div class="container-fluid">
+
+  <img src="/static/pexels-marios-potsis-623563267-17513640.jpg" class="d-block w-100"
+    style="width: 0px; height: 350px;" alt="...">
+</div>
+<div class="container col-8">
+  <h1 class="text-center mt-3">Contact Us</h1>
+
+  <form class="row g-3" method="POST" action="/Contact">
+    {% csrf_token %}
+
+    <div class="col-12">
+      <label for="name" class="form-label">name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Type Name Here....">
+    </div>
+
+    <div class="col-md-12">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" Name="email" placeholder="xyz@gmail.com">
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit Here</button>
+    </div>
+  </form>
+</div>
+
+{% endblock body %}
+
+
+
+<!--PS D:\Django\hello_project> python manage.py shell
+from myapp.models import Contact
+>>> Contact.objects.all()
+Contact.objects.all()[0]
+<Contact: Ruchika>
+>>> Contact.objects.all()[0].name
+'Ruchika'
+>>> Contact.objects.all()[0].email
+'ruchika4221@gmail.com'
+ Contact.objects.filter(name="rahul")
+<QuerySet [<Contact: rahul>, <Contact: rahul>]>
+>>> Contact.objects.filter(name="ff")
+<QuerySet [<Contact: ff>, <Contact: ff>]>
+
+for mail change----
+ ins= Contact.objects.filter(name="ff",email="123@gmail.com")[0]
+>>> ins.email='789@gmail.com'
+>>> ins.save()
+
+>>> Contact.objects.all()
+<QuerySet [<Contact: Ruchika>, <Contact: ff>, <Contact: Msg>, <Contact: Greeting Msg>, <Contact: Account>, <Contact: shashikant kumar>, <Contact: rahul>, <Contact: ff>, <Contact: rahul>]>
+>>> Contact.objects.all().first()
+<Contact: Ruchika>
+>>> Contact.objects.all().last()
+<Contact: rahul>
+
+__startswith----
+>>> Contact.objects.filter(name__startswith="r")
+<QuerySet [<Contact: Ruchika>, <Contact: rahul>, <Contact: rahul>]>
+>>>
+-->
